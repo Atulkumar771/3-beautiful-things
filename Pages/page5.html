@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Surprise For You ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        padding: 25px;
+        background: #ffe6f2;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+        animation: fadeIn 1.5s ease;
+        overflow-x: hidden;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    /* Floating Hearts */
+    .heart {
+        position: fixed;
+        bottom: -20px;
+        font-size: 24px;
+        color: #ff5fa2;
+        animation: floatUp 6s linear infinite;
+        opacity: 0.7;
+    }
+
+    @keyframes floatUp {
+        from { transform: translateY(0); }
+        to { transform: translateY(-120vh); }
+    }
+
+    h1 {
+        font-family: 'Great Vibes', cursive;
+        font-size: 3em;
+        color: #d81b60;
+        margin-top: 40px;
+    }
+
+    .msg {
+        font-size: 1.4em;
+        color: #a80052;
+        margin-top: 20px;
+        line-height: 1.5em;
+    }
+
+    .love {
+        font-family: 'Great Vibes', cursive;
+        font-size: 3em;
+        color: #ff4f8b;
+        margin-top: 40px;
+        text-shadow: 0 0 12px #ff94c8;
+        animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+        from { opacity: 0.7; }
+        to { opacity: 1; }
+    }
+
+    .btn {
+        display: inline-block;
+        margin-top: 40px;
+        padding: 14px 28px;
+        background: #ff4f8b;
+        color: white;
+        border-radius: 30px;
+        font-size: 1.3em;
+        text-decoration: none;
+        font-weight: 600;
+    }
+</style>
+</head>
+
+<body>
+
+<!-- Floating hearts -->
+<script>
+for (let i = 0; i < 20; i++) {
+    let h = document.createElement("div");
+    h.className = "heart";
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.animationDelay = (Math.random() * 4) + "s";
+    h.innerHTML = "💗";
+    document.body.appendChild(h);
+}
+</script>
+
+<h1>A Little Surprise For You 💗</h1>
+
+<div class="msg">
+    You know what, Sriyuuu?<br>
+    Sometimes words fall short…<br>
+    But my feelings never do.<br><br>
+    You are not just someone in my life —<br>
+    you’re the most beautiful part of it. ✨💗
+</div>
+
+<div class="love">
+    I Love You 💞
+</div>
+
+<a class="btn" href="../index.html">Back to Start 🌸</a>
+
+</body>
+</html>
