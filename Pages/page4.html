@@ -27,7 +27,7 @@
         font-family: 'Dancing Script', cursive;
         font-size: 2.6em;
         color: #d81b60;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
 
     .quote {
@@ -51,9 +51,22 @@
         to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Hidden audio */
+    /* Hidden audio icon */
     audio {
         display: none;
+    }
+
+    .next-btn {
+        margin-top: 40px;
+        display: inline-block;
+        padding: 15px 25px;
+        background: #ff4f8b;
+        color: white;
+        border-radius: 25px;
+        font-size: 1.3em;
+        text-decoration: none;
+        font-weight: 600;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 </style>
 </head>
@@ -65,10 +78,13 @@
 
 <!-- HIDDEN MUSIC -->
 <audio id="bgm" loop>
-    <source src="dd.mp3" type="audio/mpeg">
+    <source src="../dd.mp3" type="audio/mpeg">
 </audio>
 
 <div id="lyrics"></div>
+
+<!-- NEXT PAGE BUTTON -->
+<a href="page5.html" class="next-btn">Next 💗</a>
 
 <script>
 // LYRICS LIST
@@ -88,7 +104,6 @@ function showLyrics() {
     if (i < lines.length) {
         const l = document.createElement("div");
         l.className = "line";
-        l.style.animationDelay = "0s";
         l.innerText = lines[i];
         document.getElementById("lyrics").appendChild(l);
         i++;
@@ -96,7 +111,7 @@ function showLyrics() {
     }
 }
 
-// START MUSIC ON FIRST TAP
+// PLAY MUSIC ON FIRST TAP
 document.addEventListener("click", () => {
     document.getElementById("bgm").play();
 }, { once: true });
