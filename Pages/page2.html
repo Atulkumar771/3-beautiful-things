@@ -1,1 +1,94 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You Are More Beautiful</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #fff0f7;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+        }
+
+        .msg {
+            margin-top: 100px;
+            font-size: 1.6em;
+            font-weight: bold;
+            color: #d81b60;
+            padding: 20px;
+        }
+
+        .next-btn {
+            margin-top: 40px;
+            padding: 15px 30px;
+            background: #ff4f8b;
+            color: white;
+            border-radius: 30px;
+            font-size: 1.2em;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .word {
+            font-size: 1.4em;
+            color: #a80046;
+            margin: 15px 0;
+            animation: fade 1s ease forwards;
+            opacity: 0;
+        }
+
+        @keyframes fade {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="msg">I know what you are thinking...</div>
+    <div class="msg">Because you are not just beautiful — you are...</div>
+
+    <!-- WORDS WILL APPEAR ONE BY ONE -->
+    <div id="words"></div>
+
+    <script>
+        const words = [
+            "Gorgeous", "Stunning", "Radiant", "Elegant", "Charming",
+            "Graceful", "Captivating", "Mesmerising", "Adorable", "Lovely",
+            "Angelic", "Enchanting", "Magical", "Dreamy", "Flawless",
+            "Irresistible", "Dazzling", "Precious", "Alluring", "Ravishing",
+            "Classy", "Sparkling", "Cute", "Sweet", "Perfect",
+            "Breathtaking", "Glowing", "Divine", "Blissful", "Exquisite",
+            "Heavenly", "Vibrant", "Mine ♡"
+        ];
+
+        let index = 0;
+
+        function showWord() {
+            if (index < words.length) {
+                const div = document.createElement("div");
+                div.className = "word";
+                div.style.animationDelay = "0s";
+                div.innerText = words[index];
+                document.getElementById("words").appendChild(div);
+                index++;
+                setTimeout(showWord, 500); 
+            }
+        }
+
+        showWord();
+    </script>
+
+    <br><br><br>
+
+    <a class="next-btn" href="page3.html">Next ➜</a>
+
+</body>
+</html>
