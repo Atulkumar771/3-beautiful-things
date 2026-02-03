@@ -1,67 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3 Most Beautiful Things</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Sriyuuu 💗</title>
 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: #ffe6f2;
-            text-align: center;
-            font-family: 'Poppins', sans-serif;
-        }
-        .title {
-            margin-top: 80px;
-            font-size: 2em;
-            color: #d81b60;
-            font-weight: bold;
-        }
-        .things {
-            margin-top: 40px;
-            font-size: 1.5em;
-            color: #a80046;
-        }
-        img { 
-            width: 80%; 
-            max-width: 350px;
-            border-radius: 20px;
-            margin: 15px auto;
-            display: block;
-        }
-        .next-btn {
-            margin-top: 40px;
-            padding: 15px 30px;
-            background: #ff4f8b;
-            color: white;
-            border-radius: 30px;
-            font-size: 1.2em;
-            text-decoration: none;
-            font-weight: bold;
-        }
-    </style>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: #ffe6f2;
+        font-family: 'Poppins', sans-serif;
+        text-align: center;
+        overflow-x: hidden;
+        animation: fadeIn 1.5s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    /* FLOATING HEARTS */
+    .heart {
+        position: fixed;
+        bottom: -10px;
+        color: #ff5fa2;
+        font-size: 22px;
+        animation: floatUp 5s linear infinite;
+        opacity: 0.75;
+    }
+
+    @keyframes floatUp {
+        from { transform: translateY(0); }
+        to { transform: translateY(-110vh); }
+    }
+
+    h1 {
+        font-family: 'Great Vibes', cursive;
+        font-size: 3em;
+        color: #d81b60;
+        margin-top: 40px;
+    }
+
+    .thing-title {
+        font-size: 1.6em;
+        color: #b40052;
+        margin-top: 30px;
+    }
+
+    img {
+        width: 80%;
+        max-width: 320px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        margin: 15px 0;
+    }
+
+    .next-btn {
+        display: inline-block;
+        margin: 40px auto;
+        background: #ff4f8b;
+        padding: 14px 30px;
+        color: white;
+        border-radius: 30px;
+        text-decoration: none;
+        font-size: 1.3em;
+        font-weight: 600;
+    }
+</style>
 </head>
 
 <body>
 
-    <div class="title">There are 3 Most Beautiful Things in This World</div>
+<!-- Floating Hearts -->
+<script>
+for (let i = 0; i < 25; i++) {
+    let h = document.createElement("div");
+    h.className = "heart";
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.animationDelay = Math.random() * 4 + "s";
+    h.innerHTML = "💗";
+    document.body.appendChild(h);
+}
+</script>
 
-    <div class="things">🌅 Sunset</div>
-    <!-- Add your image -->
-    <img src="your-sunset.jpg">
+<h1>There Are 3 Most Beautiful Things in This World</h1>
 
-    <div class="things">🌄 Mountains</div>
-    <img src="your-mountain.jpg">
+<div class="thing-title">🌅 Sunset</div>
+<img src="sunset.jpg">
 
-    <div class="things">🌌 Night Sky</div>
-    <img src="your-sky.jpg">
+<div class="thing-title">🌌 Sky</div>
+<img src="sky.jpg">
 
-    <br><br>
+<div class="thing-title">⛰️ Mountain</div>
+<img src="mountain.jpg">
 
-    <!-- BUTTON TO NEXT PAGE -->
-    <a class="next-btn" href="Pages/page2.html">Next ➜</a>
+<a class="next-btn" href="Pages/page2.html">Next ➜</a>
+
+<!-- MUSIC -->
+<audio id="bgMusic" autoplay loop>
+    <source src="https://files.catbox.moe/6u9f3p.mp3">
+</audio>
+
+<script>
+document.addEventListener("click", () => {
+    document.getElementById("bgMusic").play();
+}, { once: true });
+</script>
 
 </body>
 </html>
