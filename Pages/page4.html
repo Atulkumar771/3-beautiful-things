@@ -16,7 +16,6 @@
         text-align: center;
         overflow-x: hidden;
         animation: fadeIn 1.5s ease;
-        position: relative;
     }
 
     @keyframes fadeIn {
@@ -24,54 +23,42 @@
         to { opacity: 1; }
     }
 
-    /* BACKGROUND PHOTO */
-    body::before {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: url("../IMG_20260126_050200_884.jpg") no-repeat center / cover;
-        filter: blur(6px) brightness(0.75);
-        opacity: 0.6;
-        z-index: -2;
-    }
-
-    /* PINK OVERLAY */
-    body::after {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(255, 182, 212, 0.35);
-        z-index: -1;
-    }
-
     h1 {
         font-family: 'Dancing Script', cursive;
         font-size: 2.6em;
-        color: #ffffff;
+        color: #d81b60;
         text-shadow: 0 0 10px #ff4f8b;
         margin-top: 20px;
     }
 
     .quote {
         font-size: 1.2em;
-        color: #ffe6f2;
+        color: #a80052;
         font-style: italic;
-        text-shadow: 0 0 10px #ff5fa2;
+    }
+
+    /* Her Photo Box */
+    .photo-box {
+        width: 90%;
+        max-width: 350px;
+        margin: 25px auto;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+        border: 4px solid #ffb3d6;
+    }
+
+    .photo-box img {
+        width: 100%;
+        display: block;
     }
 
     .line {
         font-size: 1.5em;
-        color: #fff;
-        margin: 18px 0;
+        color: #6a0046;
+        margin: 20px 0;
         font-family: 'Dancing Script', cursive;
         opacity: 0;
-        text-shadow: 0 0 10px #ff4f8b;
         animation: fadeUp 1s forwards;
     }
 
@@ -87,7 +74,7 @@
     /* HEART BUTTON */
     #startHeart {
         font-size: 3.5em;
-        margin-top: 80px;
+        margin-top: 30px;
         cursor: pointer;
         animation: pulse 1.5s infinite;
         color: #ff4f8b;
@@ -113,7 +100,7 @@
         font-weight: 600;
         box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         opacity: 0;
-        animation: fadeIn 1.5s forwards 12s;
+        animation: fadeIn 1.5s forwards 18s;
     }
 
     /* Signature */
@@ -121,10 +108,9 @@
         font-family: 'Dancing Script', cursive;
         font-size: 2em;
         margin-top: 40px;
-        color: #ffb3d6;
-        text-shadow: 0 0 10px #ff6fa4;
+        color: #ff4f8b;
         opacity: 0;
-        animation: fadeIn 1.5s forwards 11s;
+        animation: fadeIn 1.5s forwards 17s;
     }
 </style>
 </head>
@@ -133,6 +119,11 @@
 
 <h1>Dandelions 🌼 For My Sriyuuu 💗</h1>
 <div class="quote">"Every smile of yours feels like magic to me." ✨</div>
+
+<!-- HER PHOTO VISIBLE CLEARLY -->
+<div class="photo-box">
+    <img src="../IMG_20260126_050200_884.jpg" alt="Sriyuuu">
+</div>
 
 <!-- HEART TAP BUTTON -->
 <div id="startHeart">💗</div>
@@ -149,9 +140,7 @@
 <div class="signature">— Atul 💗</div>
 
 <!-- Surprise Button -->
-<a href="page5.html" class="next-btn">
-    Tap to begin your surprise 💗
-</a>
+<a href="page5.html" class="next-btn">Tap to begin your surprise 💗</a>
 
 <script>
 const lines = [
@@ -165,7 +154,7 @@ const lines = [
 
 let index = 0;
 
-// Show lyrics line-by-line
+// Show lyrics slowly to match song
 function showLyrics() {
     if (index < lines.length) {
         const line = document.createElement("div");
@@ -173,11 +162,12 @@ function showLyrics() {
         line.innerText = lines[index];
         document.getElementById("lyrics").appendChild(line);
         index++;
-        setTimeout(showLyrics, 2000);
+        // Slow timing: 3.5 seconds per line
+        setTimeout(showLyrics, 3500);
     }
 }
 
-// Heart Tap → Start Music + Lyrics
+// Start music + lyrics after tapping heart
 document.getElementById("startHeart").addEventListener("click", () => {
     document.getElementById("bgm").play();
     document.getElementById("startHeart").style.display = "none";
