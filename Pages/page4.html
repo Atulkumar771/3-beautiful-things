@@ -15,38 +15,63 @@
         font-family: Poppins, sans-serif;
         text-align: center;
         overflow-x: hidden;
+        animation: fadeIn 1.5s ease;
+        position: relative;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    /* BACKGROUND PHOTO */
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("../IMG_20260126_050200_884.jpg") no-repeat center / cover;
+        filter: blur(6px) brightness(0.75);
+        opacity: 0.6;
+        z-index: -2;
+    }
+
+    /* PINK OVERLAY */
+    body::after {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 182, 212, 0.35);
+        z-index: -1;
     }
 
     h1 {
         font-family: 'Dancing Script', cursive;
         font-size: 2.6em;
-        color: #d81b60;
+        color: #ffffff;
+        text-shadow: 0 0 10px #ff4f8b;
         margin-top: 20px;
-        opacity: 0;
-        animation: fadeIn 1.5s forwards 0.5s;
     }
 
     .quote {
         font-size: 1.2em;
-        color: #a80052;
-        margin-top: -5px;
+        color: #ffe6f2;
         font-style: italic;
-        opacity: 0;
-        animation: fadeIn 1.5s forwards 1.2s;
+        text-shadow: 0 0 10px #ff5fa2;
     }
 
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Lyrics lines */
     .line {
         font-size: 1.5em;
-        color: #6a0046;
+        color: #fff;
         margin: 18px 0;
-        opacity: 0;
         font-family: 'Dancing Script', cursive;
+        opacity: 0;
+        text-shadow: 0 0 10px #ff4f8b;
         animation: fadeUp 1s forwards;
     }
 
@@ -55,12 +80,11 @@
         to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Hidden audio */
     audio {
         display: none;
     }
 
-    /* Heart Start Button */
+    /* HEART BUTTON */
     #startHeart {
         font-size: 3.5em;
         margin-top: 80px;
@@ -72,24 +96,35 @@
 
     @keyframes pulse {
         0% { transform: scale(1); opacity: 0.9; }
-        50% { transform: scale(1.2); opacity: 1; }
+        50% { transform: scale(1.25); opacity: 1; }
         100% { transform: scale(1); opacity: 0.9; }
     }
 
-    /* Next button */
+    /* Surprise Button */
     .next-btn {
-        margin-top: 40px;
+        margin-top: 50px;
         display: inline-block;
-        padding: 15px 25px;
+        padding: 16px 32px;
         background: #ff4f8b;
         color: white;
-        border-radius: 25px;
-        font-size: 1.3em;
+        border-radius: 30px;
+        font-size: 1.4em;
         text-decoration: none;
         font-weight: 600;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         opacity: 0;
-        animation: fadeIn 2s forwards 10s;
+        animation: fadeIn 1.5s forwards 12s;
+    }
+
+    /* Signature */
+    .signature {
+        font-family: 'Dancing Script', cursive;
+        font-size: 2em;
+        margin-top: 40px;
+        color: #ffb3d6;
+        text-shadow: 0 0 10px #ff6fa4;
+        opacity: 0;
+        animation: fadeIn 1.5s forwards 11s;
     }
 </style>
 </head>
@@ -99,19 +134,24 @@
 <h1>Dandelions 🌼 For My Sriyuuu 💗</h1>
 <div class="quote">"Every smile of yours feels like magic to me." ✨</div>
 
-<!-- HEART BUTTON -->
+<!-- HEART TAP BUTTON -->
 <div id="startHeart">💗</div>
 
-<!-- Hidden audio -->
+<!-- Hidden Audio -->
 <audio id="bgm" loop>
     <source src="../dd.mp3" type="audio/mpeg">
 </audio>
 
-<!-- Lyrics container -->
+<!-- Lyrics -->
 <div id="lyrics"></div>
 
-<!-- Next Page Button -->
-<a href="page5.html" class="next-btn">Next 💗</a>
+<!-- Signature -->
+<div class="signature">— Atul 💗</div>
+
+<!-- Surprise Button -->
+<a href="page5.html" class="next-btn">
+    Tap to begin your surprise 💗
+</a>
 
 <script>
 const lines = [
@@ -123,30 +163,24 @@ const lines = [
     "I feel okay when I see you smile, smile 😊"
 ];
 
-let i = 0;
+let index = 0;
 
 // Show lyrics line-by-line
 function showLyrics() {
-    if (i < lines.length) {
-        const elem = document.createElement("div");
-        elem.className = "line";
-        elem.innerText = lines[i];
-        elem.style.animationDelay = "0s";
-        document.getElementById("lyrics").appendChild(elem);
-        i++;
+    if (index < lines.length) {
+        const line = document.createElement("div");
+        line.className = "line";
+        line.innerText = lines[index];
+        document.getElementById("lyrics").appendChild(line);
+        index++;
         setTimeout(showLyrics, 2000);
     }
 }
 
-// When heart is tapped
+// Heart Tap → Start Music + Lyrics
 document.getElementById("startHeart").addEventListener("click", () => {
-    // Play music
     document.getElementById("bgm").play();
-
-    // Remove heart
     document.getElementById("startHeart").style.display = "none";
-
-    // Start lyrics
     showLyrics();
 });
 </script>
