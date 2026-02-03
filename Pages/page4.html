@@ -18,9 +18,9 @@
         animation: fadeIn 1.5s ease;
     }
 
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
+    @keyframes fadeIn { 
+        from { opacity: 0; } 
+        to { opacity: 1; } 
     }
 
     h1 {
@@ -37,7 +37,7 @@
         font-style: italic;
     }
 
-    /* Her Photo Box */
+    /* PHOTO BOX */
     .photo-box {
         width: 90%;
         max-width: 350px;
@@ -53,6 +53,7 @@
         display: block;
     }
 
+    /* LYRICS */
     .line {
         font-size: 1.5em;
         color: #6a0046;
@@ -87,7 +88,7 @@
         100% { transform: scale(1); opacity: 0.9; }
     }
 
-    /* Surprise Button */
+    /* NEXT BUTTON */
     .next-btn {
         margin-top: 50px;
         display: inline-block;
@@ -100,17 +101,20 @@
         font-weight: 600;
         box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         opacity: 0;
-        animation: fadeIn 1.5s forwards 18s;
+        animation: fadeIn 1.5s forwards 40s; /* shows after lyrics */
     }
 
-    /* Signature */
+    /* SIGNATURE IN CORNER */
     .signature {
+        position: fixed;
+        bottom: 15px;
+        right: 15px;
         font-family: 'Dancing Script', cursive;
-        font-size: 2em;
-        margin-top: 40px;
+        font-size: 1.8em;
         color: #ff4f8b;
-        opacity: 0;
-        animation: fadeIn 1.5s forwards 17s;
+        opacity: 0.9;
+        text-shadow: 0 0 10px #ff8cbc;
+        z-index: 10;
     }
 </style>
 </head>
@@ -120,7 +124,7 @@
 <h1>Dandelions 🌼 For My Sriyuuu 💗</h1>
 <div class="quote">"Every smile of yours feels like magic to me." ✨</div>
 
-<!-- HER PHOTO VISIBLE CLEARLY -->
+<!-- PHOTO -->
 <div class="photo-box">
     <img src="../IMG_20260126_050200_884.jpg" alt="Sriyuuu">
 </div>
@@ -128,18 +132,18 @@
 <!-- HEART TAP BUTTON -->
 <div id="startHeart">💗</div>
 
-<!-- Hidden Audio -->
+<!-- HIDDEN AUDIO -->
 <audio id="bgm" loop>
     <source src="../dd.mp3" type="audio/mpeg">
 </audio>
 
-<!-- Lyrics -->
+<!-- LYRICS -->
 <div id="lyrics"></div>
 
-<!-- Signature -->
-<div class="signature">— Atul 💗</div>
+<!-- SIGNATURE IN CORNER -->
+<div class="signature">— I Love You Sriyuuu 💗</div>
 
-<!-- Surprise Button -->
+<!-- NEXT PAGE -->
 <a href="page5.html" class="next-btn">Tap to begin your surprise 💗</a>
 
 <script>
@@ -154,7 +158,6 @@ const lines = [
 
 let index = 0;
 
-// Show lyrics slowly to match song
 function showLyrics() {
     if (index < lines.length) {
         const line = document.createElement("div");
@@ -162,12 +165,12 @@ function showLyrics() {
         line.innerText = lines[index];
         document.getElementById("lyrics").appendChild(line);
         index++;
-        // Slow timing: 3.5 seconds per line
-        setTimeout(showLyrics, 3500);
+
+        /* PERFECT timing for your mp3 */
+        setTimeout(showLyrics, 6000);
     }
 }
 
-// Start music + lyrics after tapping heart
 document.getElementById("startHeart").addEventListener("click", () => {
     document.getElementById("bgm").play();
     document.getElementById("startHeart").style.display = "none";
@@ -176,4 +179,4 @@ document.getElementById("startHeart").addEventListener("click", () => {
 </script>
 
 </body>
-</html>
+</html>        
