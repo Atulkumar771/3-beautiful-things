@@ -12,9 +12,10 @@
         margin: 0;
         padding: 25px;
         background: #fff0f7;
-        font-family: Poppins;
+        font-family: Poppins, sans-serif;
         text-align: center;
         animation: fadeIn 1.5s ease;
+        overflow-x: hidden;
     }
 
     @keyframes fadeIn {
@@ -23,52 +24,86 @@
     }
 
     h1 {
-        font-size: 2.4em;
+        font-family: 'Dancing Script', cursive;
+        font-size: 2.6em;
         color: #d81b60;
-        font-weight: bold;
-        font-family: 'Dancing Script', cursive;
+        margin-bottom: 20px;
     }
 
-    audio {
-        width: 90%;
-        max-width: 420px;
-        margin-top: 20px;
-        border-radius: 10px;
-        outline: none;
+    .quote {
+        font-size: 1.2em;
+        color: #a80052;
+        margin-top: -10px;
+        font-style: italic;
     }
 
-    .lyrics {
-        margin-top: 35px;
+    .line {
         font-size: 1.5em;
-        line-height: 1.7em;
         color: #6a0046;
-        white-space: pre-line;
+        margin: 18px 0;
         font-family: 'Dancing Script', cursive;
+        opacity: 0;
+        animation: fadeUp 1s forwards;
+    }
+
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Hidden audio */
+    audio {
+        display: none;
     }
 </style>
 </head>
 
 <body>
 
-<h1>Dandelions 🌼 For You, My Sriyuuu 💗</h1>
+<h1>Dandelions 🌼 For My Sriyuuu 💗</h1>
+<div class="quote">"Every smile of yours feels like magic to me." ✨</div>
 
-<!-- Fixed Audio Player -->
-<audio id="music" controls autoplay muted onplay="this.muted=false">
-    <source src="https://files.catbox.moe/6u9f3p.mp3" type="audio/mpeg">
+<!-- HIDDEN MUSIC -->
+<audio id="bgm" loop>
+    <source src="dd.mp3" type="audio/mpeg">
 </audio>
 
-<div class="lyrics">
+<div id="lyrics"></div>
 
-I've heard of a love that comes once in a lifetime  
-And I'm pretty sure that you are that love of mine 💗  
+<script>
+// LYRICS LIST
+const lines = [
+    "I've heard of a love that comes once in a lifetime",
+    "And I'm pretty sure that you are that love of mine 💗",
+    "'Cause I'm in a field of dandelions",
+    "Wishing on every one that you'd be mine, mine ✨",
+    "And I see forever in your eyes",
+    "I feel okay when I see you smile, smile 😊"
+];
 
-'Cause I'm in a field of dandelions  
-Wishing on every one that you'd be mine, mine ✨  
+let i = 0;
 
-And I see forever in your eyes  
-I feel okay when I see you smile, smile 😊  
+// ANIMATE LYRICS LINE BY LINE
+function showLyrics() {
+    if (i < lines.length) {
+        const l = document.createElement("div");
+        l.className = "line";
+        l.style.animationDelay = "0s";
+        l.innerText = lines[i];
+        document.getElementById("lyrics").appendChild(l);
+        i++;
+        setTimeout(showLyrics, 2000);
+    }
+}
 
-</div>
+// START MUSIC ON FIRST TAP
+document.addEventListener("click", () => {
+    document.getElementById("bgm").play();
+}, { once: true });
+
+// Start lyrics animation
+showLyrics();
+</script>
 
 </body>
 </html>
