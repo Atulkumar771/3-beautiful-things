@@ -1,68 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Final Question ❤️</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Question ❤️</title>
 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: #ffe6f0;
-            text-align: center;
-            font-family: 'Poppins', sans-serif;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
-        .title {
-            margin-top: 100px;
-            font-size: 2em;
-            color: #d81b60;
-            font-weight: bold;
-        }
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: #ffe6f0;
+        font-family: Poppins, sans-serif;
+        text-align: center;
+        animation: fadeIn 1.5s ease;
+    }
 
-        .options {
-            margin-top: 50px;
-        }
+    @keyframes fadeIn {
+        from { opacity: 0; opacity: 0; }
+        to { opacity: 1; }
+    }
 
-        .btn {
-            display: inline-block;
-            padding: 15px 30px;
-            margin: 15px;
-            background: #ff4f8b;
-            color: white;
-            border-radius: 30px;
-            font-size: 1.3em;
-            text-decoration: none;
-        }
+    h1 {
+        margin-top: 100px;
+        font-size: 2.4em;
+        color: #d81b60;
+        font-weight: bold;
+        font-family: Great Vibes, cursive;
+    }
 
-        .next-btn {
-            margin-top: 50px;
-            display: inline-block;
-            padding: 15px 30px;
-            background: #d81b60;
-            color: white;
-            font-size: 1.2em;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-    </style>
+    .btn {
+        display: inline-block;
+        padding: 15px 30px;
+        margin: 20px;
+        background: #ff4f8b;
+        color: white;
+        border-radius: 30px;
+        font-size: 1.4em;
+        text-decoration: none;
+        font-weight: 600;
+        transition: transform .2s;
+    }
+
+    .btn:hover {
+        transform: scale(1.1);
+    }
+
+    .next-btn {
+        display: inline-block;
+        margin-top: 40px;
+        padding: 14px 30px;
+        background: #d81b60;
+        color: white;
+        border-radius: 30px;
+        text-decoration: none;
+        font-size: 1.3em;
+        font-weight: 600;
+    }
+</style>
 </head>
 
 <body>
 
-    <div class="title">
-        Madam ji, aapke paas sirf 2 options hain… 💗
-    </div>
+<h1>Madam ji, aapke paas sirf 2 options hain… 💗</h1>
 
-    <div class="options">
-        <a class="btn" href="page4.html">Biwi banogi?</a>
-        <a class="btn" href="page4.html">Meri mummy ki bahu banogi?</a>
-    </div>
+<a class="btn" href="page4.html">Biwi banogi?</a>
+<a class="btn" href="page4.html">Meri mummy ki bahu banogi?</a>
 
-    <!-- NEXT BUTTON -->
-    <a class="next-btn" href="page4.html">Next ➜</a>
+<a class="next-btn" href="page4.html">Next ➜</a>
+
+<!-- MUSIC -->
+<audio id="bgMusic" autoplay loop>
+    <source src="https://files.catbox.moe/6u9f3p.mp3">
+</audio>
+
+<script>
+document.addEventListener("click", () => {
+    document.getElementById("bgMusic").play();
+}, { once: true });
+</script>
 
 </body>
 </html>
