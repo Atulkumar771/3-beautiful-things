@@ -14,35 +14,39 @@
         background: #fff0f7;
         font-family: Poppins, sans-serif;
         text-align: center;
-        animation: fadeIn 1.5s ease;
         overflow-x: hidden;
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
     }
 
     h1 {
         font-family: 'Dancing Script', cursive;
         font-size: 2.6em;
         color: #d81b60;
-        margin-bottom: 10px;
+        margin-top: 20px;
+        opacity: 0;
+        animation: fadeIn 1.5s forwards 0.5s;
     }
 
     .quote {
         font-size: 1.2em;
         color: #a80052;
-        margin-top: -10px;
+        margin-top: -5px;
         font-style: italic;
+        opacity: 0;
+        animation: fadeIn 1.5s forwards 1.2s;
     }
 
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Lyrics lines */
     .line {
         font-size: 1.5em;
         color: #6a0046;
         margin: 18px 0;
-        font-family: 'Dancing Script', cursive;
         opacity: 0;
+        font-family: 'Dancing Script', cursive;
         animation: fadeUp 1s forwards;
     }
 
@@ -51,11 +55,28 @@
         to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Hidden audio icon */
+    /* Hidden audio */
     audio {
         display: none;
     }
 
+    /* Heart Start Button */
+    #startHeart {
+        font-size: 3.5em;
+        margin-top: 80px;
+        cursor: pointer;
+        animation: pulse 1.5s infinite;
+        color: #ff4f8b;
+        text-shadow: 0 0 15px #ff9ac8;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); opacity: 0.9; }
+        50% { transform: scale(1.2); opacity: 1; }
+        100% { transform: scale(1); opacity: 0.9; }
+    }
+
+    /* Next button */
     .next-btn {
         margin-top: 40px;
         display: inline-block;
@@ -67,6 +88,8 @@
         text-decoration: none;
         font-weight: 600;
         box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        opacity: 0;
+        animation: fadeIn 2s forwards 10s;
     }
 </style>
 </head>
@@ -76,18 +99,21 @@
 <h1>Dandelions 🌼 For My Sriyuuu 💗</h1>
 <div class="quote">"Every smile of yours feels like magic to me." ✨</div>
 
-<!-- HIDDEN MUSIC -->
+<!-- HEART BUTTON -->
+<div id="startHeart">💗</div>
+
+<!-- Hidden audio -->
 <audio id="bgm" loop>
     <source src="../dd.mp3" type="audio/mpeg">
 </audio>
 
+<!-- Lyrics container -->
 <div id="lyrics"></div>
 
-<!-- NEXT PAGE BUTTON -->
+<!-- Next Page Button -->
 <a href="page5.html" class="next-btn">Next 💗</a>
 
 <script>
-// LYRICS LIST
 const lines = [
     "I've heard of a love that comes once in a lifetime",
     "And I'm pretty sure that you are that love of mine 💗",
@@ -99,25 +125,30 @@ const lines = [
 
 let i = 0;
 
-// ANIMATE LYRICS LINE BY LINE
+// Show lyrics line-by-line
 function showLyrics() {
     if (i < lines.length) {
-        const l = document.createElement("div");
-        l.className = "line";
-        l.innerText = lines[i];
-        document.getElementById("lyrics").appendChild(l);
+        const elem = document.createElement("div");
+        elem.className = "line";
+        elem.innerText = lines[i];
+        elem.style.animationDelay = "0s";
+        document.getElementById("lyrics").appendChild(elem);
         i++;
         setTimeout(showLyrics, 2000);
     }
 }
 
-// PLAY MUSIC ON FIRST TAP
-document.addEventListener("click", () => {
+// When heart is tapped
+document.getElementById("startHeart").addEventListener("click", () => {
+    // Play music
     document.getElementById("bgm").play();
-}, { once: true });
 
-// Start lyrics animation
-showLyrics();
+    // Remove heart
+    document.getElementById("startHeart").style.display = "none";
+
+    // Start lyrics
+    showLyrics();
+});
 </script>
 
 </body>
