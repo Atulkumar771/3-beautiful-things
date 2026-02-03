@@ -33,6 +33,8 @@
         width: 90%;
         max-width: 420px;
         margin-top: 20px;
+        border-radius: 10px;
+        outline: none;
     }
 
     .lyrics {
@@ -50,8 +52,9 @@
 
 <h1>Dandelions 🌼 For You, My Sriyuuu 💗</h1>
 
-<audio controls autoplay>
-    <source src="https://files.catbox.moe/6u9f3p.mp3">
+<!-- Fixed Audio Player -->
+<audio id="music" controls autoplay muted onplay="this.muted=false">
+    <source src="https://files.catbox.moe/6u9f3p.mp3" type="audio/mpeg">
 </audio>
 
 <div class="lyrics">
